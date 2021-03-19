@@ -135,7 +135,6 @@ GameObject:
   - component: {fileID: 126689096}
   - component: {fileID: 126689099}
   - component: {fileID: 126689098}
-  - component: {fileID: 126689100}
   - component: {fileID: 126689101}
   m_Layer: 0
   m_Name: snowman 3
@@ -246,18 +245,6 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
---- !u!114 &126689100
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 126689095}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d2808c7d5a32047459465773f31caa01, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &126689101
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -270,8 +257,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 475e321d3591fe14eb21572f3e7c18b3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  position: {x: 0, y: 0}
+  spawnPoint: {fileID: 522017394}
   m_fMovementSpeed: 10
+  isGrounded: 0
 --- !u!1 &421869123
 GameObject:
   m_ObjectHideFlags: 0
@@ -498,6 +486,36 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &522017394
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 522017395}
+  m_Layer: 0
+  m_Name: SpawnPoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 1206586993520771344, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &522017395
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 522017394}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -2.58, y: 3.85, z: -1.1639532}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &847144621
 GameObject:
@@ -839,6 +857,7 @@ GameObject:
   - component: {fileID: 1972551753}
   - component: {fileID: 1972551752}
   - component: {fileID: 1972551755}
+  - component: {fileID: 1972551756}
   m_Layer: 0
   m_Name: mounted platform 4
   m_TagString: Untagged
@@ -949,7 +968,28 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c09abd6cf2be7a047a98b17295024a1f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_fMovementSpeed: 10
+  m_fMovementSpeed: 5
+--- !u!50 &1972551756
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1972551751}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
 --- !u!1 &1978700348
 GameObject:
   m_ObjectHideFlags: 0

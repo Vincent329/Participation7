@@ -8,18 +8,20 @@ public class PlayerMovement : MonoBehaviour
     private GameObject spawnPoint;
 
     [SerializeField]
-    private Vector2 position;
-    [SerializeField]
     private float m_fMovementSpeed = 10;
 
     private SpriteRenderer spriteRender;
     private Rigidbody2D m_rb;
+
+    [SerializeField]
+    private bool isGrounded;
     // Start is called before the first frame update
     void Start()
     {
         m_rb = GetComponent<Rigidbody2D>();
         spriteRender = GetComponent<SpriteRenderer>();
         gameObject.transform.position = spawnPoint.transform.position;
+        isGrounded = false;
     }
 
     // Update is called once per frame
@@ -46,7 +48,7 @@ public class PlayerMovement : MonoBehaviour
                 spriteRender.flipX = false;
             }
         }
-        if (Input.GetKey(KeyCode.RightArrow))
+        else if (Input.GetKey(KeyCode.RightArrow))
         {
             m_rb.AddForce(Vector3.right * m_fMovementSpeed);
             if (spriteRender != null)
@@ -54,5 +56,28 @@ public class PlayerMovement : MonoBehaviour
                 spriteRender.flipX = true;
             }
         }
+
+        if (Input.GetKey(KeyCode.Space) && isGrounded)
+        {
+            Debug.Log("Jump");
+            m_rb.AddForce(Vector3.up * m_fMovementSpeed, ForceMode2D.Impulse);
+            isGrounded = false;
+        }
     }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        Debug.Log("Collision... ow");
+        isGrounded = true;
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        Debug.Log("Hide Behind the platform");
+        Rigidbody2D tempRigidBody = GetComponent<Rigidbody2D>();
+        gameObject.transform.position = new Vector3(Random.Range(-8f, 8f), 6f, 0f);
+        tempRigidBody.velocity = Vector2.zero;
+
+    }
+
 }
